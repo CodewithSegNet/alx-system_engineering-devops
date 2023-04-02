@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-# Configures a new ubuntu machine by installing
-# Nginx where it should be listening on port 80
-# Serve a page that would return a Hello World string
-#
+# Configure Nginx server so that /redirect_me is redirecting to another page
 
-# starting nginx service
-sudo service nginx start
+# Install nginx
+sudo apt-get update
+sudo apt-get install -y nginx
 
-# allowing nginx on firewall
-sudo ufw allow 'Nginx HTTP'
+# Configuration
+ufw allow 'Nginx HTTP'
 
 # Creating Sample Page
 echo "Hello World!" > /var/www/html/index.html
@@ -17,5 +15,5 @@ echo "Hello World!" > /var/www/html/index.html
 string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.google.com permanent;"
 sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
-# Restarting nginx
-service nginx restart
+# Restart Nginx
+nginx -s reload
