@@ -23,4 +23,4 @@
 - [0x0A](./0x0A-configuration_management) : configuration management.
 - [0x0B](./0x0B-ssh) : ssh.
 - [0x0C](./0x0C-web_server) : web server.
-- [0x0D](./0x0D-web_stack_debugging_0) : web stack debugging 0.
+- [0x0D](./0x0D-web_stack_debugging_0) : web stack debugging #0.
