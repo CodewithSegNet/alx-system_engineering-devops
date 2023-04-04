@@ -31,6 +31,18 @@ echo "server {
 	root /etc/nginx/html;
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
+       
+        add_header X-Served-By \$hostname;
+        location / {
+                 try_files \$uri \$uri/ =404;
+        }
+        if (\$request_filename ~ redirect_me){
+	rewrite ^ https://google.com permanent;
+	}
+	error_page 404 /404.html;
+	location = /404.html {
+		internal;
+	}
 }
 " > /etc/nginx/sites-available/default
 
