@@ -1,0 +1,38 @@
+#!/dentical to web-01
+# The name of the custom HTTP header must be X-Served-By
+# The value of the custom HTTP header must be the hostname of the server Nginx is running on
+#sudo sed -i 's/server_name _;.*/server_name _;\n\tadd_header X-Served-By \$hostname;/' /etc/nginx/sites-enabled/default usr/bin/env bash
+
+#Install nginx
+sudo apt -y update
+sudo apt install -y nginx
+
+# Give the user ownership to website files for easy editing
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+# Creating new index
+echo -e "Hello World!" > /var/www/html/index.nginx-debian.html
+
+echo "Ceci n'est pas une page" > /etc/nginx/html/404.html
+
+#configure nginx to listen on port 80
+ufw allow 'Nginx HTTP'
+
+#Creating Sample Page
+echo "Hello World!" > /etc/nginx/html/index.html
+
+
+#Create Server Block
+echo "server {
+        listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /etc/nginx/html;
+	index index.html index.htm index.nginx-debian.html;
+	server_name _;
+}
+" > /etc/nginx/sites-available/default
+
+# restarting nginx
+sudo service nginx restart
