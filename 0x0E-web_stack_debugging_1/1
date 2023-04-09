@@ -1,3 +1,0 @@
-sed: couldn't open temporary file /etc/nginx/sites-enabled/sedd4Ed1j: Permission denied
- * Restarting nginx nginx
-   ...fail!
