@@ -42,8 +42,8 @@ backend omo3.tech-backend
 
 frontend omo3.tech-frontend
         bind *:80
-	bind *:443 crt /etc/haproxy/certs/www.omo3.tech.pem
-        redirect scheme https if !{ ssl_fc }
+  	bind *:443 ssl crt /etc/haproxy/certs/www.omo3.tech.pem
+        http-request redirect scheme https code 301 unless { ssl_fc }
         mode http
         default_backend omo3.tech-backend
 #--omo3.tech-params-end--
