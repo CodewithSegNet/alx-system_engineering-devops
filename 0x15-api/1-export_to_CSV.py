@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-"""A python script that, using Rest Api, for
-a given employee ID, returns information about
-his/her TODO list program
-"""
+
 import csv
 import requests
 import sys
@@ -18,7 +15,7 @@ if __name__ == "__main__":
     user_id = int(sys.argv[1])
     for user in data2:
         if user['id'] == user_id:
-            employee_name = user['name']
+            employee_name = user['id']
             break
 
     if employee_name is None:
