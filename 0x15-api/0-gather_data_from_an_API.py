@@ -26,8 +26,7 @@ for i in data:
         if i.get('completed') is True:
             completed += 1
             tasks.append(i.get('title'))
-print("Employee {} is done with tasks({}/{}):"
-        .format(employee, completed, total))
+print("Employee {} is done with tasks({}/{}):".format(employee, completed, total))
 
 for i in tasks:
     print("\t {}".format(i))
