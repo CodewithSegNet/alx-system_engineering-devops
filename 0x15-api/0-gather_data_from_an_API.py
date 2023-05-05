@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-"""A python script that,  using Rest Api, for a given employee ID, returns information about his/her TODO list program
+"""A python script that,  using Rest Api, for
+a given employee ID, returns information about
+his/her TODO list program
 """
-
 from requests import get
-from  sys import argv
+from sys import argv
 
 if __name__ == "__main__":
     response = get('https://jsonplaceholder.typicode.com/todos/')
@@ -15,20 +16,18 @@ if __name__ == "__main__":
     data2 = response2.json()
     employee = ""
 
-    for i in data2:
-        if i.get('id') == int(argv[1]):
-            employee = i.get('name')
+for i in data2:
+    if i.get('id') == int(argv[1]):
+        employee = i.get('name')
 
-    for i in data:
-        if i.get('userId') == int(argv[1]):
-            total += 1
+for i in data:
+    if i.get('userId') == int(argv[1]):
+        total += 1
+        if i.get('completed') is True:
+            completed += 1
+            tasks.append(i.get('title'))
+print("Employee {} is done with tasks({}/{}):"
+        .format(employee, completed, total))
 
-            if i.get('completed') is True:
-                completed += 1 
-                tasks.append(i.get('title'))
-    print("Employee {} is done with tasks({}/{}):".format(employee, completed, total))
-
-    for i in tasks:
-        print("\t {}".format(i))
-
-
+for i in tasks:
+    print("\t {}".format(i))
