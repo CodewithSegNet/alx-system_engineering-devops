@@ -7,11 +7,9 @@ from requests import get
 from sys import argv
 import csv
 
-
-if __name__=="__main__":
-    # making request to get todo data and user data
+if __name__ == "__main__":
     response = get('https://jsonplaceholder.typicode.com/todos/').json()
-    response2= get('https://jsonplaceholder.typicode.com/users').json()
+    response2 = get('https://jsonplaceholder.typicode.com/users').json()
 
     # getting user user id and name
     for user in response2:
@@ -31,3 +29,4 @@ if __name__=="__main__":
 
                 writer.writerow(row)
 
+        print(f"Data written in {argv[1]}")
