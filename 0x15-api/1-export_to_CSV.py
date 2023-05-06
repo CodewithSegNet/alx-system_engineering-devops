@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 export data to csv
 """
@@ -8,18 +7,20 @@ from sys import argv
 import csv
 
 if __name__ == "__main__":
-    response = get('https://jsonplaceholder.typicode.com/todos/').json()
-    response2 = get('https://jsonplaceholder.typicode.com/users').json()
+    response = get('https://jsonplaceholder.typicode.com/todos/')
+    data = response.json()
+    response2 = get('https://jsonplaceholder.typicode.com/users')
+    data2= response2.json()
 
     # getting user user id and name
-    for user in response2:
+    for user in data2:
         if user['id'] == int(argv[1]):
             employee_name = user['name']
 
     with open(argv[1] + '.csv', 'w', newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
 
-        for i in response:
+        for i in data:
             row = []
             if i['userId'] == int(argv[1]):
                 row.append(i['userId'])
