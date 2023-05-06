@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 
 """
-A python script to export data in the JSON format.
+Python script that exports data in the JSON format.
 """
+
 from requests import get
 from sys import argv
 import json
@@ -17,23 +18,24 @@ if __name__ == "__main__":
 
     for i in data2:
         if i['id'] == int(argv[1]):
-            u_name = i['name']
-            id_num = i['id']
+            u_name = i['username']
+            id_no = i['id']
 
     row = []
 
     for i in data:
+
         new_dict = {}
 
         if i['userId'] == int(argv[1]):
-            new_dict['name'] = u_name
+            new_dict['username'] = u_name
             new_dict['task'] = i['title']
             new_dict['completed'] = i['completed']
             row.append(new_dict)
 
     final_dict = {}
-    final_dict[id_num] = row
+    final_dict[id_no] = row
     json_obj = json.dumps(final_dict)
 
-    with open(argv[1] + '.json', mode='w') as file:
-        file.write(json_obj)
+    with open(argv[1] + ".json",  "w") as f:
+        f.write(json_obj)
