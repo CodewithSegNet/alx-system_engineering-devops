@@ -35,5 +35,5 @@ if __name__ == "__main__":
     final_dict[id_num] = row
     json_obj = json.dumps(final_dict)
 
-    with open(argv[1] + '.json', 'w') as f:
-        f.write(json_obj)
+    with open(argv[1] + '.json', mode='w') as file:
+        file.write(json_obj)
