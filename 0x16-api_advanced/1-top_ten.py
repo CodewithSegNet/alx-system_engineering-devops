@@ -23,7 +23,7 @@ def top_ten(subreddit):
         data = response.json().get('data')
         for entry in data.get('children'):
             title = entry.get('data').get('title')
-            if not title.startswith("(2 chars long)"):
+            if len(title) != 2:
                 print(title)
         return "OK"
     else:
