@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""A function that queries the Reddit API and prints the titles of the first 10 hot posts listed"""
+"""A function that queries the Reddit API and \
+        prints the titles of the first 10 hot posts listed"""
 
 import json
 import requests
@@ -22,6 +23,7 @@ def top_ten(subreddit):
         data = response.json().get('data')
         for entry in data.get('children'):
             print(entry.get('data').get('title'))
+        return "OK"
     else:
         print("None")
         return
