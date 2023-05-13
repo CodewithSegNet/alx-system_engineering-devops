@@ -22,7 +22,9 @@ def top_ten(subreddit):
     if response.status_code == 200:
         data = response.json().get('data')
         for entry in data.get('children'):
-            print(entry.get('data').get('title'))
+            title = entry.get('data').get('title')
+            if not title.startswith("(2 chars long)"):
+                print(title)
         return "OK"
     else:
         print("None")
