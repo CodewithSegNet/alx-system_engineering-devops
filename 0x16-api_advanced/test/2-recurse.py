@@ -23,7 +23,10 @@ def recurse(subreddit, hot_list=[], after=""):
         after = results.get("after")
         for entry in results.get("children"):
             hot_list.append(entry.get("data").get("title"))
-            if after:
-                return recurse(subreddit, hot_list, after)
-            return hot_list
+
+        if after:
+            return recurse(subreddit, hot_list, after)
+
+        return hot_list
+
     return None
