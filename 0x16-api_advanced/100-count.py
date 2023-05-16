@@ -28,12 +28,18 @@ def count_words(subreddit, word_list):
         if val != 0:
             print("{}: {}".format(key, val))
 
+
 def recurse(subreddit, hot_list=[], after=None):
     """Recursively fetches hot titles from a subreddit"""
-    headers = {'user-agent': 'mobile-device'}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/89.0.4389.82 Safari/537.36"
+    }
     params = {'after': after}
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    response = requests.get(url, headers=headers, allow_redirects=False, params=params)
+    response = requests.get(url, headers=headers, allow_redirects=False,
+                            params=params)
 
     if response.status_code == 200:
         data = response.json().get('data')
