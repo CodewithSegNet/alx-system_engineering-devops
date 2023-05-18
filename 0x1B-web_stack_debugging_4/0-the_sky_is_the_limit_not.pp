@@ -2,8 +2,13 @@
 # In this case, 
 # I will make 2000 requests to my server with 100 requests at a time.
 
-file_line{'ulimit_option':
-    pathi => '/etc/default/nginx',
-    line  => 'ULIMIT="-n 2049"\n',
-    match => '^ULIMIT='
+#file_line{'ulimit_option':
+#   pathi => '/etc/default/nginx',
+#    line  => 'ULIMIT="-n 2049"\n',
+#    match => '^ULIMIT='
+#}
+
+file{'/etc/default/nginx':
+    ensure  => file,
+    content => "ULIMIT='-n 2049'\n"
 }
