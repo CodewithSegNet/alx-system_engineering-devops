@@ -4,6 +4,6 @@
 
 file_line{'ulimit_option':
     pathi => '/etc/default/nginx',
-    line  => 'ULIMIT ="-n 2049"',
+    line  => 'ULIMIT="-n 2049"',
     match => '^ULIMIT='
 }
